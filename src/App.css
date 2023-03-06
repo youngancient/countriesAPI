@@ -1,0 +1,34 @@
+
+/* Theme css definition */
+.darkLayoutBG{
+    background: hsl(207, 26%, 17%);
+}
+.lightLayoutBG{
+    background: hsl(0, 0%, 98%);
+}
+
+.darkPrimaryText,.lightComponentBG {
+    color: hsl(0, 0%, 100%);
+}
+.lightPrimaryText{
+    color: hsl(200, 15%, 8%);
+}
+
+.darkComponentBG{
+    background: hsl(209, 23%, 22%);
+}
+.darkComponentBG::-webkit-input-placeholder{
+    color: hsl(0, 0%, 100%);
+}
+.lightComponentBG::-webkit-input-placeholder{
+    color: hsl(200, 15%, 8%);
+}
+.darkShadow{
+
+}
+@media screen and (min-width : 728px) {
+    
+}
+@media screen and (min-width : 998px) {
+    
+}

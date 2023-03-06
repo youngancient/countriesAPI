@@ -1,0 +1,59 @@
+nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+nav, .ele{
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+.bdr{
+    border: 1px solid black;
+}
+nav button {
+  display: flex;
+  font-size: 0.8rem;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+  height: 40px;
+}
+
+nav h2{
+    font-size: 1.4rem;
+}
+nav button p {
+  font-weight: 800;
+  margin-left: 8px;
+}
+nav button i{
+    transform: rotateZ(-25deg);
+}
+.theme-switch{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+@media screen and (min-width: 728px) {
+  nav, .ele {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+  nav button {
+    font-size: 1rem;
+  }
+  nav h2{
+    font-size: 2rem;
+}
+}
+@media screen and (min-width: 998px) {
+  nav, .ele {
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+}
