@@ -7,24 +7,38 @@
     background: hsl(0, 0%, 98%);
 }
 
-.darkPrimaryText,.lightComponentBG {
+.darkPrimaryText {
     color: hsl(0, 0%, 100%);
 }
+
 .lightPrimaryText{
     color: hsl(200, 15%, 8%);
 }
-
+.lightMinorText{
+    color: hsl(209, 23%, 22%);
+}
+.darkMinorText{
+    color: hsl(0, 0%, 82%);
+}
 .darkComponentBG{
     background: hsl(209, 23%, 22%);
 }
+.lightComponentBG{
+    background: hsl(0, 0%, 100%);
+}
+
 .darkComponentBG::-webkit-input-placeholder{
     color: hsl(0, 0%, 100%);
 }
 .lightComponentBG::-webkit-input-placeholder{
     color: hsl(200, 15%, 8%);
 }
-.darkShadow{
 
+.darkShadow{
+    box-shadow: -2px 2px 5px 2px hsl(207, 26%, 15%);
+}
+.lightShadow{
+    box-shadow: -2px 2px 5px 2px hsl(0, 0%, 90%);
 }
 @media screen and (min-width : 728px) {
     

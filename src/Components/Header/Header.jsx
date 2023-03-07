@@ -5,7 +5,7 @@ import "./style.css";
 const Header = ({ toggleTheme }) => {
   const themes = useContext(ThemeContext);
   return (
-    <header className={themes.componentBG}>
+    <header className={`${themes.componentBG} ${themes.shadow}`}>
       <nav className="">
         <h2 className={themes.primaryText}>Where in the world?</h2>
         <div className="theme-switch">

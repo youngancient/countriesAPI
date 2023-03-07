@@ -8,7 +8,8 @@ export const themes ={
         layoutBG : "darkLayoutBG",
         input : "hsl(0, 0%, 52%)",
         componentBG: "darkComponentBG",
-        darkShadow: "darkShadow",
+        shadow: "darkShadow",
+        minorText : "darkMinorText",
     },
     light:{
         name : "light",
@@ -16,7 +17,8 @@ export const themes ={
         layoutBG : "lightLayoutBG",
         input : "",
         componentBG:  "lightComponentBG",
-        lightShadow : "lightShadow",
+        shadow : "lightShadow",
+        minorText : "lightMinorText",
     }
 }
 

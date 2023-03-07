@@ -1,0 +1,19 @@
+
+
+.country-list{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+@media screen and (min-width : 728px) {
+    .country-list{
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: unset;
+    }
+}
+@media screen and (min-width : 998px) {
+    
+}
