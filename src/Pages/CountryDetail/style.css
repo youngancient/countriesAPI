@@ -50,6 +50,13 @@
   font-weight: 600;
   word-break: break-all;
 }
+.bcont{
+  width: 150px;
+  padding: 0.4rem 0.25rem 0.4rem 0.25rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .bcont p{
   font-weight: 600;
 }
@@ -71,7 +78,36 @@
   flex-direction: column;
 }
 .bdrs{
-  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.bcont{
+  margin-top: 0.8rem;
+  margin-left: 0.5rem;
+  cursor: pointer;
+}
+.bcont:nth-of-type(odd){
+  margin-left: 0; 
+}
+.none{
+  margin-top: 0.8rem;
+}
+@media screen and (min-width:728px) {
+  .display .one {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .one span {
+    width: 50%;
+    margin-top: 0;
+  }
+  .bcont{
+    margin-left: 0.5rem;
+  }
+  .bcont:nth-of-type(1),.bcont:nth-of-type(5){
+    margin-left: 0; 
+  }
 }
 @media screen and (min-width: 998px) {
   .inner-cont {
@@ -79,10 +115,6 @@
     grid-template-columns: 1fr 1fr;
     margin-top: 3rem;
     grid-gap: 4rem;
-  }
-  .display .one {
-    flex-direction: row;
-    justify-content: space-between;
   }
   .inner-detail {
     display: flex;
@@ -103,16 +135,27 @@
     margin-top: 2rem;
   }
   .borders {
-    margin-top: 3rem;
+    margin-top: 2rem;
     display: flex;
     flex-direction: row;
   }
   .one span .value {
     margin-left: 0.5rem;
   }
+  .borders .head {
+    width: 22%;
+    margin-top: 0.8rem;
+  }
   .borders .bdrs {
     word-break: break-all;
     margin-top: 0;
-    margin-left: 1rem;
+    width: 78%;
+  }
+  .bcont:nth-of-type(odd){
+    margin-left: 0.5rem; 
+  }
+  .bcont{
+    margin-top: 0.5rem;
+    margin-left: 0.5rem;
   }
 }

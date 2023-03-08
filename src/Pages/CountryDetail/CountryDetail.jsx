@@ -1,20 +1,23 @@
 import "./style.css";
-import { Link, NavLink, useParams } from "react-router-dom";
+import { Link, NavLink, useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useContext } from "react";
 import ThemeContext from "../../Utils/ThemeContext";
 import { useLocation } from "react-router-dom";
 import Border from "./Border";
+import { v4 as uuid } from "uuid";
 
 const CountryDetail = () => {
   const [countryDetail, setCountryDetail] = useState(null);
   const [countries, setCountries] = useState();
   const [borderCountries, setBorderCountries] = useState();
   const [all, setAll] = useState(false);
-  const [play, setPlay] = useState(false);
+
   const location = useLocation();
-  //   const { country } = useParams();
+  let params = useParams();
+
+  // this gets all the countries
   useEffect(() => {
     setCountryDetail(location.state);
     axios
@@ -26,10 +29,13 @@ const CountryDetail = () => {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [params]);
+
+  // this filters the array of all the countries to match the boundary of the current country
   useEffect(() => {
     if (all) {
       const borders = countryDetail.borders;
+      // console.log(borders);
       let alternativeArr = [];
       if (borders !== undefined) {
         borders.forEach((border) => {
@@ -39,27 +45,28 @@ const CountryDetail = () => {
           alternativeArr.push(newCountry["0"]);
         });
         setBorderCountries(alternativeArr);
-        setPlay(true);
+        setAll(false);
       }
     }
-  }, [all]);
-  useEffect(() => {
-    console.log(borderCountries);
-  }, [play]);
+  }, [all, params]);
   const themes = useContext(ThemeContext);
+  const navigate = useNavigate();
+  const handleBack =()=>{
+    navigate(-1);
+  }
   return (
     <>
       {countryDetail !== null ? (
         <div className={`${themes.layoutBG} ${themes.primaryText} ele display`}>
           <div className="back-btn">
-            <NavLink to="/" className="back">
+            <div className="back" onClick={handleBack}>
               <button
                 className={`${themes.componentBG} ${themes.shadow} ${themes.primaryText}`}
               >
                 <i className="fa-sharp fa-solid fa-arrow-left"></i>
                 <p>Back</p>
               </button>
-            </NavLink>
+            </div>
           </div>
           <div className="inner-cont">
             <div className="flag">
@@ -135,8 +142,10 @@ const CountryDetail = () => {
                   <p className="head">Border Countries: </p>
                   <div className="bdrs">
                     {borderCountries === undefined
-                      ? "None found"
-                      : borderCountries.map((border) => <Border border={border} key={border.cioc} />)}
+                      ? <p className={`none ${themes.minorText}`}>None found</p>
+                      : borderCountries.map((border) => (
+                          <Border border={border} key={uuid()} />
+                        ))}
                   </div>
                 </div>
               </div>
