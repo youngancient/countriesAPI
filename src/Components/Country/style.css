@@ -28,6 +28,7 @@ h3 {
   padding-bottom: 1.5rem;
   border-bottom-right-radius: 8px;
   border-bottom-left-radius: 8px;
+  width: 320px;
 }
 .minor {
   margin-top: 0.5rem;
@@ -42,6 +43,8 @@ h3 {
 .minor span .value {
   margin-left: 0.25rem;
   font-weight: 600;
+  word-break: break-all;
+  /* max-width: 220px; */
 }
 .minor span:nth-child(1) {
   margin-top: 0;

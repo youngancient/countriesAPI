@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import ThemeContext from "../../Utils/ThemeContext";
 import "./style.css";
@@ -8,6 +8,7 @@ const Country = ({ capital, name, population, region, flag, country}) => {
   const handleClick = () => {
     navigate(`/${name}`,{state: country});
   };
+
   const themes = useContext(ThemeContext);
   return (
     <div className={`country ${themes.shadow}`} onClick={handleClick}>
@@ -27,7 +28,7 @@ const Country = ({ capital, name, population, region, flag, country}) => {
           </span>
           <span>
             <p className="head">Capital:</p>
-            <p className={`value ${themes.minorText}`}>{capital}</p>
+            <p className={`value ${themes.minorText}`}>{capital === undefined ? "None found" : capital.toString()}</p>
           </span>
         </div>
       </div>

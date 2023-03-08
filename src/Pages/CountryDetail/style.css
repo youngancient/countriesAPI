@@ -26,6 +26,7 @@
 }
 .inner-cont {
   margin-top: 2rem;
+  padding-bottom: 3rem;
 }
 .display .one {
   display: flex;
@@ -47,6 +48,13 @@
 .one span .value {
   margin-left: 0.25rem;
   font-weight: 600;
+  word-break: break-all;
+}
+.bcont p{
+  font-weight: 600;
+}
+.lang{
+  width: 100%;
 }
 .inner-detail {
   margin-top: 2rem;
@@ -61,6 +69,9 @@
   margin-top: 1.5rem;
   display: flex;
   flex-direction: column;
+}
+.bdrs{
+  margin-top: 1rem;
 }
 @media screen and (min-width: 998px) {
   .inner-cont {
@@ -101,5 +112,7 @@
   }
   .borders .bdrs {
     word-break: break-all;
+    margin-top: 0;
+    margin-left: 1rem;
   }
 }
