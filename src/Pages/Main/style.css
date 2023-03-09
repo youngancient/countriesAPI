@@ -16,11 +16,24 @@
     padding-right: 0.8rem;
     border-radius: 8px;
     font-weight: 600;
+    font-size: 1rem;
 }
 .search-icon{
     position: absolute;
     top: 33%;
     left: 15px;
+}
+.filter-cont{
+    margin-top: 1.5rem;
+}
+.filter{
+    width: 50vw;
+}
+.ant-select-selection-item {
+    font-weight: 600;
+}
+.ant-select-item-option-content {
+    font-weight: 600;
 }
 @media screen and (min-width : 728px) {
     .functions{
@@ -30,6 +43,12 @@
     }
     .search input{
         width: 30vw;
+    }
+    .filter-cont{
+        margin-top: 0;
+    }
+    .filter{
+        width: 15vw;
     }
 }
 @media screen and (min-width : 998px) {

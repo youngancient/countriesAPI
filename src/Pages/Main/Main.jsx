@@ -2,14 +2,22 @@ import { useContext, useState } from "react";
 import CountryList from "../../Components/CountryList/CountryList";
 import ThemeContext from "../../Utils/ThemeContext";
 import "./style.css";
+import Filter from "./Filter";
 
 const Main = () => {
   const themes = useContext(ThemeContext);
   const [search, setSearch] = useState({
-    q : "",
+    q: "",
     isSearch: false,
   });
-  const handleSearch =(event)=>{
+  const [filter, setFilter] = useState({
+    q: "",
+    isSearch: false,
+  });
+
+  const [countries, setCountries] = useState([]);
+
+  const handleSearch = (event) => {
     let query = event.target.value.trim();
     if (query == "") {
       setSearch({
@@ -22,28 +30,39 @@ const Main = () => {
         isSearch: true,
       });
     }
-  }
+  };
   return (
     <div className={`${themes.layoutBG} main `}>
       <div className="functions ele">
         <div className={`search ${themes.shadow}`}>
-          <i className={`fa-solid fa-magnifying-glass search-icon ${themes.primaryText}`}></i>
+          <i
+            className={`fa-solid fa-magnifying-glass search-icon ${themes.primaryText}`}
+          ></i>
           <input
             type="text"
             name="q"
             id=""
             placeholder="Search for a country ..."
             className={`${themes.componentBG} ${themes.primaryText}`}
-            onChange = {handleSearch}
-            onKeyUp = {handleSearch}
+            onChange={handleSearch}
+            onKeyUp={handleSearch}
           />
         </div>
-        <div className="filter">
-          <p>filter by region</p>
+        <div className="filter-cont">
+          <Filter
+            filter={filter}
+            setFilter={setFilter}
+            countries={countries}
+            setCountries={setCountries}
+          />
         </div>
       </div>
       <div className="countries ele">
-        <CountryList search={search} />
+        <CountryList
+          search={search}
+          countries={countries}
+          setCountries={setCountries}
+        />
       </div>
     </div>
   );

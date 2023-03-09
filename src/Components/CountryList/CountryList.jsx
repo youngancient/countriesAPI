@@ -3,8 +3,7 @@ import axios from "axios";
 import Country from "../Country/Country";
 import "./style.css";
 
-const CountryList = ({ search }) => {
-  const [countries, setCountries] = useState([]);
+const CountryList = ({ search, countries, setCountries}) => {
   useEffect(() => {
     if (search.isSearch) {
       axios
@@ -19,8 +18,7 @@ const CountryList = ({ search }) => {
       axios
         .get("https://restcountries.com/v3.1/all")
         .then((res) => {
-          let slice = res.data.slice(150);
-          setCountries(slice);
+          setCountries(res.data);
         })
         .catch((err) => {
           console.log(err);
