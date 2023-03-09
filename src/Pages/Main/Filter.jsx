@@ -3,6 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import ThemeContext from "../../Utils/ThemeContext";
 import axios from "axios";
 import "./style.css";
+import { useNavigate } from "react-router-dom";
 
 const options = [
   {
@@ -30,7 +31,16 @@ const options = [
     label: "All",
   },
 ];
-const Filter = ({ filter, setFilter, setCountries, duplicate, setLoading, setError, search }) => {
+const Filter = ({
+  filter,
+  setFilter,
+  setCountries,
+  duplicate,
+  error,
+  setLoading,
+  setError,
+  search,
+}) => {
   const themes = useContext(ThemeContext);
 
   const handleChange = (value) => {
@@ -53,15 +63,15 @@ const Filter = ({ filter, setFilter, setCountries, duplicate, setLoading, setErr
         .get(`https://restcountries.com/v3.1/region/${filter.q}`)
         .then((res) => {
           setLoading(true);
-          if(!search.isSearch){
+          if (!search.isSearch) {
             setCountries(res.data);
-          }else{
+          } else {
             let whole = res.data;
-            let newWhole = whole.filter((ele)=>{
-              if(ele.name.common.toLowerCase().includes(search.q)){
-                return ele
+            let newWhole = whole.filter((ele) => {
+              if (ele.name.common.toLowerCase().includes(search.q)) {
+                return ele;
               }
-            })
+            });
             setCountries(newWhole);
           }
         })
@@ -69,10 +79,14 @@ const Filter = ({ filter, setFilter, setCountries, duplicate, setLoading, setErr
           setLoading(false);
           setError("ish");
         });
-    }else{
+    } else {
       setCountries(duplicate);
     }
   }, [filter.q]);
+  const navigate = useNavigate();
+  if(error){
+    navigate('/404');
+  }
   return (
     <ConfigProvider
       theme={

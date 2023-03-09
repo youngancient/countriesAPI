@@ -5,7 +5,6 @@ import Header from "./Components/Header/Header";
 import Main from "./Pages/Main/Main";
 import CountryDetail from "./Pages/CountryDetail/CountryDetail";
 import ThemeContext, { themes } from "./Utils/ThemeContext";
-
 function App() {
   const [theme, setTheme] = useState(themes.light);
   const toggleTheme = () => {

@@ -1,0 +1,50 @@
+
+
+.error{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.error .img, .error .img img{
+    width: 100%;
+}
+.error .img{
+    margin-top: -10rem;
+}
+.error h3{
+    font-size: 3rem;
+}
+.error p{
+    font-weight: 600;
+}
+.error-other{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: -2rem;
+}
+.error button{
+    height: 50px;
+    font-size: 0.8rem;
+    margin-top: 1rem;
+    width: 120px;
+    font-weight: 600;
+    border-radius: 8px;
+}
+@media screen and (min-width : 728px) {
+    .error .img{
+        margin-top: -10rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .error .img img{
+        width: 300px;
+    }
+}
+@media screen and (min-width : 998px) {
+    
+}

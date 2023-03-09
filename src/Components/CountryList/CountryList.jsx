@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Country from "../Country/Country";
 import "./style.css";
+import Error from "../Error404/Error";
 
 const CountryList = ({
   search,
@@ -54,22 +55,6 @@ const CountryList = ({
     }
   }, [search.q]);
 
-  // else if (search.isSearch && filter.isFilter) {
-  //   axios
-  //     .get(`https://restcountries.com/v3.1/name/${search.q}`)
-  //     .then((res) => {
-  //       setLoading(true);
-  //       let whole = res.data;
-  //       const filteredWhole = whole.filter((country) => {
-  //         return country.region === filter.q;
-  //       });
-  //       setCountries(filteredWhole);
-  //     })
-  //     .catch((err) => {
-  //       setLoading(false);
-  //       setError("ish");
-  //     });
-  // }
   // initialize the read-only state
   useEffect(() => {
     axios
@@ -98,6 +83,7 @@ const CountryList = ({
             country={country}
           />
         ))}
+        { error && <Error />}
     </div>
   );
 };

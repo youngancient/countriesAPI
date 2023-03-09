@@ -6,7 +6,7 @@ import Filter from "./Filter";
 
 const Main = () => {
   const themes = useContext(ThemeContext);
-  const [search, setSearch] = useState('');
+  const [search, setSearch] = useState("");
   const [filter, setFilter] = useState({
     q: "",
     isFilter: false,
@@ -19,7 +19,7 @@ const Main = () => {
   const [duplicate, setDuplicate] = useState([]);
 
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null)
+  const [error, setError] = useState(null);
 
   // handling input
   const handleSearch = (event) => {
@@ -58,10 +58,11 @@ const Main = () => {
             filter={filter}
             setFilter={setFilter}
             setCountries={setCountries}
-            duplicate = {duplicate}
+            duplicate={duplicate}
             setLoading={setLoading}
             setError={setError}
-            search= {search}
+            error={error}
+            search={search}
           />
         </div>
       </div>
@@ -71,7 +72,7 @@ const Main = () => {
           countries={countries}
           setCountries={setCountries}
           setDuplicate={setDuplicate}
-          filter = {filter}
+          filter={filter}
         />
       </div>
     </div>

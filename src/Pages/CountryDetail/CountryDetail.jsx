@@ -7,6 +7,7 @@ import ThemeContext from "../../Utils/ThemeContext";
 import { useLocation } from "react-router-dom";
 import Border from "./Border";
 import { v4 as uuid } from "uuid";
+import Error from "../../Components/Error404/Error";
 
 const CountryDetail = () => {
   const [countryDetail, setCountryDetail] = useState(null);
@@ -55,7 +56,7 @@ const CountryDetail = () => {
     if (all) {
       const borders = countryDetail.borders;
       let alternativeArr = [];
-      if (borders !== undefined ) {
+      if (borders !== undefined && countries !== undefined) {
         borders.forEach((border) => {
           const newCountry = countries.filter((country) => {
             return country["cca3"] === border;
@@ -73,9 +74,10 @@ const CountryDetail = () => {
   const handleBack = () => {
     navigate(-1);
   };
+  
   return (
     <>
-      {countryDetail !== null ? (
+      {countryDetail && (
         <div className={`${themes.layoutBG} ${themes.primaryText} ele display`}>
           <div className="back-btn">
             <div className="back" onClick={handleBack}>
@@ -173,9 +175,8 @@ const CountryDetail = () => {
             </div>
           </div>
         </div>
-      ) : (
-        <p> No such country!!!</p>
       )}
+    {error && <Error  />}
     </>
   );
 };
