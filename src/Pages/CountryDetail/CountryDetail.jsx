@@ -14,30 +14,48 @@ const CountryDetail = () => {
   const [borderCountries, setBorderCountries] = useState();
   const [all, setAll] = useState(false);
 
-  const location = useLocation();
   let params = useParams();
+  // console.log(params);
+
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   // this gets all the countries
   useEffect(() => {
-    setCountryDetail(location.state);
     axios
-      .get("https://restcountries.com/v3.1/all")
+      .get(
+        `https://restcountries.com/v3.1/name/${params.country}?fullText=true`
+      )
       .then((res) => {
-        setCountries(res.data);
+        setLoading(true);
+        setCountryDetail(res.data["0"]);
         setAll(true);
       })
       .catch((err) => {
-        console.log(err);
+        setLoading(false);
+        setError("ish");
       });
   }, [params]);
+
+  useEffect(() => {
+    axios
+      .get("https://restcountries.com/v3.1/all")
+      .then((res) => {
+        setLoading(true);
+        setCountries(res.data);
+      })
+      .catch((err) => {
+        setLoading(false);
+        setError("ish");
+      });
+  }, []);
 
   // this filters the array of all the countries to match the boundary of the current country
   useEffect(() => {
     if (all) {
       const borders = countryDetail.borders;
-      // console.log(borders);
       let alternativeArr = [];
-      if (borders !== undefined) {
+      if (borders !== undefined ) {
         borders.forEach((border) => {
           const newCountry = countries.filter((country) => {
             return country["cca3"] === border;
@@ -49,11 +67,12 @@ const CountryDetail = () => {
       }
     }
   }, [all, params]);
+
   const themes = useContext(ThemeContext);
   const navigate = useNavigate();
-  const handleBack =()=>{
+  const handleBack = () => {
     navigate(-1);
-  }
+  };
   return (
     <>
       {countryDetail !== null ? (
@@ -141,11 +160,13 @@ const CountryDetail = () => {
                 <div className="borders">
                   <p className="head">Border Countries: </p>
                   <div className="bdrs">
-                    {borderCountries === undefined
-                      ? <p className={`none ${themes.minorText}`}>None found</p>
-                      : borderCountries.map((border) => (
-                          <Border border={border} key={uuid()} />
-                        ))}
+                    {borderCountries === undefined ? (
+                      <p className={`none ${themes.minorText}`}>None found</p>
+                    ) : (
+                      borderCountries.map((border) => (
+                        <Border border={border} key={uuid()} />
+                      ))
+                    )}
                   </div>
                 </div>
               </div>
@@ -153,7 +174,7 @@ const CountryDetail = () => {
           </div>
         </div>
       ) : (
-        <>{/* No such country!!! */}</>
+        <p> No such country!!!</p>
       )}
     </>
   );

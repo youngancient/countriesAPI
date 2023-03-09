@@ -1,6 +1,7 @@
 import { ConfigProvider, Select, Space, theme } from "antd";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import ThemeContext from "../../Utils/ThemeContext";
+import axios from "axios";
 import "./style.css";
 
 const options = [
@@ -26,11 +27,12 @@ const options = [
   },
   {
     value: "",
-    label: "None",
+    label: "All",
   },
 ];
-const Filter = ({ filter, setFilter, countries, setCountries }) => {
+const Filter = ({ filter, setFilter, setCountries, duplicate, setLoading, setError, search }) => {
   const themes = useContext(ThemeContext);
+
   const handleChange = (value) => {
     if (value == "") {
       setFilter({
@@ -44,17 +46,31 @@ const Filter = ({ filter, setFilter, countries, setCountries }) => {
       });
     }
   };
+
   useEffect(() => {
     if (filter.isFilter) {
-      const newCountries = countries.filter((country) => {
-        return country.region === filter.q;
-      });
-      console.log(filter.q);
-      console.log(newCountries);
-    //   the last functionality ish is here, after updating the state to the filtered countries, 
-    // when func gets to line 49 to filter again, it filters based on the reslt from the last filter
-    // this returns an empty array
-      setCountries(newCountries);
+      axios
+        .get(`https://restcountries.com/v3.1/region/${filter.q}`)
+        .then((res) => {
+          setLoading(true);
+          if(!search.isSearch){
+            setCountries(res.data);
+          }else{
+            let whole = res.data;
+            let newWhole = whole.filter((ele)=>{
+              if(ele.name.common.toLowerCase().includes(search.q)){
+                return ele
+              }
+            })
+            setCountries(newWhole);
+          }
+        })
+        .catch((err) => {
+          setLoading(false);
+          setError("ish");
+        });
+    }else{
+      setCountries(duplicate);
     }
   }, [filter.q]);
   return (

@@ -6,17 +6,22 @@ import Filter from "./Filter";
 
 const Main = () => {
   const themes = useContext(ThemeContext);
-  const [search, setSearch] = useState({
-    q: "",
-    isSearch: false,
-  });
+  const [search, setSearch] = useState('');
   const [filter, setFilter] = useState({
     q: "",
-    isSearch: false,
+    isFilter: false,
   });
 
+  // readable and writable state
   const [countries, setCountries] = useState([]);
 
+  // readable state
+  const [duplicate, setDuplicate] = useState([]);
+
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null)
+
+  // handling input
   const handleSearch = (event) => {
     let query = event.target.value.trim();
     if (query == "") {
@@ -52,8 +57,11 @@ const Main = () => {
           <Filter
             filter={filter}
             setFilter={setFilter}
-            countries={countries}
             setCountries={setCountries}
+            duplicate = {duplicate}
+            setLoading={setLoading}
+            setError={setError}
+            search= {search}
           />
         </div>
       </div>
@@ -62,6 +70,8 @@ const Main = () => {
           search={search}
           countries={countries}
           setCountries={setCountries}
+          setDuplicate={setDuplicate}
+          filter = {filter}
         />
       </div>
     </div>

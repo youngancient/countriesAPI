@@ -3,10 +3,10 @@ import { NavLink, useNavigate } from "react-router-dom";
 import ThemeContext from "../../Utils/ThemeContext";
 import "./style.css";
 
-const Country = ({ capital, name, population, region, flag, country}) => {
+const Country = ({ capital, name, population, region, flag}) => {
   const navigate = useNavigate();
   const handleClick = () => {
-    navigate(`/${name}`,{state: country});
+    navigate(`/${name}`);
   };
 
   const themes = useContext(ThemeContext);
