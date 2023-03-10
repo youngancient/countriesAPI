@@ -35,6 +35,10 @@
 .ant-select-item-option-content {
     font-weight: 600;
 }
+.countries{
+    min-height: 100vh;
+}
+
 @media screen and (min-width : 728px) {
     .functions{
         flex-direction: row;

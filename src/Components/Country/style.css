@@ -49,6 +49,9 @@ h3 {
 .minor span:nth-child(1) {
   margin-top: 0;
 }
+.for-motion{
+  overflow-y: hidden;
+}
 @media screen and (min-width: 728px) {
   .country-img {
     width: 320px;
