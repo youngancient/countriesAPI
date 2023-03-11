@@ -91,7 +91,6 @@ const Filter = ({
     navigate('/404');
   }
 
-  const { token } = useToken();
   return (
     <ConfigProvider
       theme={

@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 
 const countryVariants = {
   initial: {
-    scale: 0.7,
+    scale: 0.9,
     opacity: 0,
   },
   final: {
