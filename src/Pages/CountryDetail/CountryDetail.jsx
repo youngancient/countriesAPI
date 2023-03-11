@@ -9,7 +9,30 @@ import Border from "./Border";
 import { v4 as uuid } from "uuid";
 import Error from "../../Components/Error404/Error";
 import Loader from "../../Components/Loader/Loader";
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
+
+const flagVariants = {
+  initial: {
+    x: "30px",
+  },
+  final: {
+    x: 0,
+    transition: {
+      duration: 1,
+    },
+  },
+};
+const secondVariants = {
+  initial: {
+    x: "-30px",
+  },
+  final: {
+    x: 0,
+    transition: {
+      duration: 1,
+    },
+  },
+};
 
 const CountryDetail = () => {
   const [countryDetail, setCountryDetail] = useState(null);
@@ -92,15 +115,27 @@ const CountryDetail = () => {
             </div>
           </div>
           <div className="inner-cont">
-            <div className="flag">
+            <motion.div
+              className="flag"
+              variants={flagVariants}
+              initial="initial"
+              whileInView="final"
+              viewport={{once : true }}
+            >
               <img
                 src={countryDetail.flags.png}
                 alt=""
                 className=""
                 loading="lazy"
               />
-            </div>
-            <div className="inner-detail">
+            </motion.div>
+            <motion.div
+              className="inner-detail"
+              variants={secondVariants}
+              initial="initial"
+              whileInView="final"
+              viewport={{once : true }}
+            >
               <div className="all-inner">
                 <h2 className="">{countryDetail.name.common}</h2>
                 <div className="one">
@@ -174,7 +209,7 @@ const CountryDetail = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       )}
