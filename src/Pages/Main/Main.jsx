@@ -72,6 +72,8 @@ const Main = () => {
           countries={countries}
           setCountries={setCountries}
           setDuplicate={setDuplicate}
+          setLoading={setLoading}
+          loading={loading}
           filter={filter}
         />
       </div>

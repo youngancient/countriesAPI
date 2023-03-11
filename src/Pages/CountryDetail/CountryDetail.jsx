@@ -8,6 +8,8 @@ import { useLocation } from "react-router-dom";
 import Border from "./Border";
 import { v4 as uuid } from "uuid";
 import Error from "../../Components/Error404/Error";
+import Loader from "../../Components/Loader/Loader";
+import { AnimatePresence } from "framer-motion";
 
 const CountryDetail = () => {
   const [countryDetail, setCountryDetail] = useState(null);
@@ -28,9 +30,9 @@ const CountryDetail = () => {
         `https://restcountries.com/v3.1/name/${params.country}?fullText=true`
       )
       .then((res) => {
-        setLoading(true);
         setCountryDetail(res.data["0"]);
         setAll(true);
+        setLoading(true);
       })
       .catch((err) => {
         setLoading(false);
@@ -42,8 +44,8 @@ const CountryDetail = () => {
     axios
       .get("https://restcountries.com/v3.1/all")
       .then((res) => {
-        setLoading(true);
         setCountries(res.data);
+        setLoading(true);
       })
       .catch((err) => {
         setLoading(false);
@@ -74,10 +76,10 @@ const CountryDetail = () => {
   const handleBack = () => {
     navigate(-1);
   };
-  
+
   return (
     <>
-      {countryDetail && (
+      {countryDetail && loading && (
         <div className={`${themes.layoutBG} ${themes.primaryText} ele display`}>
           <div className="back-btn">
             <div className="back" onClick={handleBack}>
@@ -176,7 +178,10 @@ const CountryDetail = () => {
           </div>
         </div>
       )}
-    {error && <Error  />}
+      {error && <Error />}
+      <div className="x-load">
+        <AnimatePresence>{!loading && <Loader key="load" />}</AnimatePresence>
+      </div>
     </>
   );
 };

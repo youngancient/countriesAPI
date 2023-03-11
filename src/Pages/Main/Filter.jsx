@@ -31,6 +31,8 @@ const options = [
     label: "All",
   },
 ];
+const { useToken } = theme;
+
 const Filter = ({
   filter,
   setFilter,
@@ -62,7 +64,6 @@ const Filter = ({
       axios
         .get(`https://restcountries.com/v3.1/region/${filter.q}`)
         .then((res) => {
-          setLoading(true);
           if (!search.isSearch) {
             setCountries(res.data);
           } else {
@@ -74,12 +75,14 @@ const Filter = ({
             });
             setCountries(newWhole);
           }
+          setLoading(true);
         })
         .catch((err) => {
           setLoading(false);
           setError("ish");
         });
     } else {
+      setLoading(true);
       setCountries(duplicate);
     }
   }, [filter.q]);
@@ -87,6 +90,8 @@ const Filter = ({
   if(error){
     navigate('/404');
   }
+
+  const { token } = useToken();
   return (
     <ConfigProvider
       theme={
@@ -107,8 +112,8 @@ const Filter = ({
         options={options}
         dropdownStyle={
           themes.name === "dark"
-            ? { backgroundColor: "hsl(209, 23%, 22%)" }
-            : { backgroundColor: "hsl(0, 0%, 100%)" }
+            ? { backgroundColor: "hsl(209, 23%, 22%)", color : "hsl(0, 0%, 100%)"  }
+            : { backgroundColor: "hsl(0, 0%, 100%)" , color : "hsl(209, 23%, 22%)"  }
         }
       />
     </ConfigProvider>

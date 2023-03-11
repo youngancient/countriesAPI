@@ -39,6 +39,15 @@
     min-height: 100vh;
 }
 
+/* alter antd theme */
+.ant-select:not(.ant-select-customize-input) .ant-select-selector , .ant-select-selector  * {
+    background-color: inherit;
+    color: inherit;
+    transition: inherit;
+  }
+.ant-select-selection-search{
+    transition: none;
+}
 @media screen and (min-width : 728px) {
     .functions{
         flex-direction: row;
@@ -56,7 +65,5 @@
     }
 }
 @media screen and (min-width : 998px) {
-    .functions{
-        
-    }
+    
 }

@@ -3,12 +3,16 @@ import axios from "axios";
 import Country from "../Country/Country";
 import "./style.css";
 import Error from "../Error404/Error";
+import Loader from "../Loader/Loader";
+import { AnimatePresence } from "framer-motion";
 
 const CountryList = ({
   search,
   countries,
   setCountries,
   setDuplicate,
+  // setLoading,
+  // loading,
   filter,
 }) => {
   const [loading, setLoading] = useState(false);
@@ -18,16 +22,16 @@ const CountryList = ({
       axios
         .get(`https://restcountries.com/v3.1/name/${search.q}`)
         .then((res) => {
-          setLoading(true);
           if (filter.isFilter) {
             let whole = res.data;
             const filteredWhole = whole.filter((country) => {
               return country.region === filter.q;
             });
             setCountries(filteredWhole);
-          }else{
+          } else {
             setCountries(res.data);
           }
+          setLoading(true);
         })
         .catch((err) => {
           setLoading(false);
@@ -37,16 +41,16 @@ const CountryList = ({
       axios
         .get("https://restcountries.com/v3.1/all")
         .then((res) => {
-          setLoading(true);
           if (filter.isFilter) {
             let whole = res.data;
             const filteredWhole = whole.filter((country) => {
               return country.region === filter.q;
             });
             setCountries(filteredWhole);
-          }else{
+          } else {
             setCountries(res.data);
           }
+          setLoading(true);
         })
         .catch((err) => {
           setLoading(false);
@@ -60,8 +64,8 @@ const CountryList = ({
     axios
       .get("https://restcountries.com/v3.1/all")
       .then((res) => {
-        setLoading(true);
         setDuplicate(res.data);
+        setLoading(true);
       })
       .catch((err) => {
         setLoading(false);
@@ -83,7 +87,10 @@ const CountryList = ({
             country={country}
           />
         ))}
-        { error && <Error />}
+      <div className="x-load">
+        <AnimatePresence>{!loading && <Loader key="loader" />}</AnimatePresence>
+      </div>
+      {error && <Error />}
     </div>
   );
 };

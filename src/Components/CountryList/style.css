@@ -6,6 +6,12 @@
     justify-content: center;
     align-items: center;
 }
+.x-load{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 @media screen and (min-width : 728px) {
     .country-list{
         flex-direction: row;
