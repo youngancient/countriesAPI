@@ -86,6 +86,7 @@ const CountryDetail = () => {
           const newCountry = countries.filter((country) => {
             return country["cca3"] === border;
           });
+          // console.log(newCountry);
           alternativeArr.push(newCountry["0"]);
         });
         setBorderCountries(alternativeArr);

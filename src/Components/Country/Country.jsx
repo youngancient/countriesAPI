@@ -18,20 +18,11 @@ const countryVariants = {
     },
   },
 };
-// const underVariants = {
-//   initial: {
-//     height: 0,
-//   },
-//   final: {
-//     height: "auto",
-//     transition: {
-//       duration: 1.2,
-//     },
-//   },
-// };
-const Country = ({ capital, name, population, region, flag }) => {
+
+const Country = ({ capital, name, population, region, flag,country }) => {
   const navigate = useNavigate();
   const handleClick = () => {
+    console.log(country);
     navigate(`/${name}`);
   };
 
