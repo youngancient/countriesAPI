@@ -33,6 +33,21 @@ const secondVariants = {
     },
   },
 };
+const pageVariants = {
+  exit : {
+    opacity : 0,
+    x : '100vw',
+    transition :{
+      duration : 0.5,
+    }
+  },
+  btnExit:{
+    opacity : 0,
+    transition :{
+      duration : 0.5,
+    }
+  }
+}
 
 const CountryDetail = () => {
   const [countryDetail, setCountryDetail] = useState(null);
@@ -86,14 +101,14 @@ const CountryDetail = () => {
           const newCountry = countries.filter((country) => {
             return country["cca3"] === border;
           });
-          // console.log(newCountry);
+          console.log("bulaba");
           alternativeArr.push(newCountry["0"]);
         });
         setBorderCountries(alternativeArr);
         setAll(false);
       }
     }
-  }, [all, params]);
+  });
 
   const themes = useContext(ThemeContext);
   const navigate = useNavigate();
@@ -104,8 +119,12 @@ const CountryDetail = () => {
   return (
     <>
       {countryDetail && loading && (
-        <div className={`${themes.layoutBG} ${themes.primaryText} ele display`}>
-          <div className="back-btn">
+        <motion.div className={`${themes.layoutBG} ${themes.primaryText} ele display`}
+        >
+          <motion.div className="back-btn"
+          variants={pageVariants}
+          exit = "btnExit"
+          >
             <div className="back" onClick={handleBack}>
               <button
                 className={`${themes.componentBG} ${themes.shadow} ${themes.primaryText}`}
@@ -114,8 +133,11 @@ const CountryDetail = () => {
                 <p>Back</p>
               </button>
             </div>
-          </div>
-          <div className="inner-cont">
+          </motion.div>
+          <motion.div className="inner-cont"
+          variants={pageVariants}
+          exit = "exit"
+          >
             <motion.div
               className="flag"
               variants={flagVariants}
@@ -211,8 +233,8 @@ const CountryDetail = () => {
                 </div>
               </div>
             </motion.div>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       )}
       {error && <Error />}
       <div className="x-load">

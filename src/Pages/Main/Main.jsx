@@ -3,6 +3,23 @@ import CountryList from "../../Components/CountryList/CountryList";
 import ThemeContext from "../../Utils/ThemeContext";
 import "./style.css";
 import Filter from "./Filter";
+import { motion } from "framer-motion";
+
+const pageVariants = {
+  exit: {
+    opacity: 0,
+    x: "-100vw",
+    transition: {
+      duration: 0.5,
+    },
+  },
+  funcExit: {
+    opacity: 0,
+    transition: {
+      duration: 0.5,
+    },
+  },
+};
 
 const Main = () => {
   const themes = useContext(ThemeContext);
@@ -38,7 +55,10 @@ const Main = () => {
   };
   return (
     <div className={`${themes.layoutBG} main `}>
-      <div className="functions ele">
+      <motion.div className="functions ele"
+      variants={pageVariants}
+      exit = "funcExit"
+      >
         <div className={`search ${themes.shadow}`}>
           <i
             className={`fa-solid fa-magnifying-glass search-icon ${themes.primaryText}`}
@@ -65,8 +85,8 @@ const Main = () => {
             search={search}
           />
         </div>
-      </div>
-      <div className="countries ele">
+      </motion.div>
+      <motion.div className="countries ele" variants={pageVariants} exit="exit">
         <CountryList
           search={search}
           countries={countries}
@@ -76,7 +96,7 @@ const Main = () => {
           loading={loading}
           filter={filter}
         />
-      </div>
+      </motion.div>
     </div>
   );
 };

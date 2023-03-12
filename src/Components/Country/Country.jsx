@@ -22,7 +22,6 @@ const countryVariants = {
 const Country = ({ capital, name, population, region, flag,country }) => {
   const navigate = useNavigate();
   const handleClick = () => {
-    console.log(country);
     navigate(`/${name}`);
   };
 
