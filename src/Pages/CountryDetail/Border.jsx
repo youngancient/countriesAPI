@@ -24,6 +24,9 @@ const Border = ({ border }) => {
   const handleClick = () => {
     navigate(`/${name}`, { state: border });
   };
+  const truncate = (str, num) => {
+    return str.length > num ? str.substring(0, num) + "..." : str;
+  };
   return (
     <motion.div
       className={`bcont ${themes.componentBG} ${themes.shadow} ${themes.primaryText}`}
@@ -33,7 +36,7 @@ const Border = ({ border }) => {
       whileInView= "final"
       viewport={{once:true}}
     >
-      <p>{name}</p>
+      <p>{truncate(name,35)}</p>
     </motion.div>
   );
 };
