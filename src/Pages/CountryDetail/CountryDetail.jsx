@@ -34,20 +34,20 @@ const secondVariants = {
   },
 };
 const pageVariants = {
-  exit : {
-    opacity : 0,
-    x : '100vw',
-    transition :{
-      duration : 0.5,
-    }
+  exit: {
+    opacity: 0,
+    x: "100vw",
+    transition: {
+      duration: 0.5,
+    },
   },
-  btnExit:{
-    opacity : 0,
-    transition :{
-      duration : 0.5,
-    }
-  }
-}
+  btnExit: {
+    opacity: 0,
+    transition: {
+      duration: 0.5,
+    },
+  },
+};
 
 const CountryDetail = () => {
   const [countryDetail, setCountryDetail] = useState(null);
@@ -119,11 +119,11 @@ const CountryDetail = () => {
   return (
     <>
       {countryDetail && loading && (
-        <motion.div className={`${themes.layoutBG} ${themes.primaryText} ele display`}
-        >
-          <motion.div className="back-btn"
-          variants={pageVariants}
-          exit = "btnExit"
+        <div className={`${themes.layoutBG} ${themes.primaryText} ele display`}>
+          <motion.div
+            className="back-btn"
+            variants={pageVariants}
+            exit="btnExit"
           >
             <div className="back" onClick={handleBack}>
               <button
@@ -134,16 +134,17 @@ const CountryDetail = () => {
               </button>
             </div>
           </motion.div>
-          <motion.div className="inner-cont"
-          variants={pageVariants}
-          exit = "exit"
+          <motion.div
+            className="inner-cont"
+            variants={pageVariants}
+            exit="exit"
           >
             <motion.div
               className="flag"
               variants={flagVariants}
               initial="initial"
               whileInView="final"
-              viewport={{once : true }}
+              viewport={{ once: true }}
             >
               <img
                 src={countryDetail.flags.png}
@@ -157,7 +158,7 @@ const CountryDetail = () => {
               variants={secondVariants}
               initial="initial"
               whileInView="final"
-              viewport={{once : true }}
+              viewport={{ once: true }}
             >
               <div className="all-inner">
                 <h2 className="">{countryDetail.name.common}</h2>
@@ -234,7 +235,7 @@ const CountryDetail = () => {
               </div>
             </motion.div>
           </motion.div>
-        </motion.div>
+        </div>
       )}
       {error && <Error />}
       <div className="x-load">
