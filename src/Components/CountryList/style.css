@@ -21,5 +21,7 @@
     }
 }
 @media screen and (min-width : 998px) {
-    
+    .country-list{
+        justify-content: unset;
+    }
 }

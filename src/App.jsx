@@ -6,6 +6,8 @@ import Main from "./Pages/Main/Main";
 import CountryDetail from "./Pages/CountryDetail/CountryDetail";
 import ThemeContext, { themes } from "./Utils/ThemeContext";
 import { AnimatePresence } from "framer-motion";
+import { Empty } from "antd";
+import Error from "./Components/Error404/Error";
 function App() {
   const location = useLocation();
   const [theme, setTheme] = useState(themes.light);
@@ -20,6 +22,7 @@ function App() {
             <Routes key={location.pathname} location={location}>
               <Route index element={<Main />}></Route>
               <Route path="/:country" element={<CountryDetail />}></Route>
+              <Route path="/*" element={<Error />}></Route>
             </Routes>
           </AnimatePresence>
       </main>

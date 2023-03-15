@@ -5,14 +5,13 @@ import "./style.css";
 import Error from "../Error404/Error";
 import Loader from "../Loader/Loader";
 import { AnimatePresence } from "framer-motion";
+import BasicError from "../Error404/BasicError";
 
 const CountryList = ({
   search,
   countries,
   setCountries,
   setDuplicate,
-  // setLoading,
-  // loading,
   filter,
 }) => {
   const [loading, setLoading] = useState(false);
@@ -32,6 +31,7 @@ const CountryList = ({
             setCountries(res.data);
           }
           setLoading(true);
+          setError();
         })
         .catch((err) => {
           setLoading(false);
@@ -90,7 +90,8 @@ const CountryList = ({
       <div className="x-load">
         <AnimatePresence>{!loading && <Loader key="loader" />}</AnimatePresence>
       </div>
-      {error && <Error />}
+      {/* {error && <Error />} */}
+      {error && <BasicError />}
     </div>
   );
 };

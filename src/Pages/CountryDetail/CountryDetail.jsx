@@ -216,25 +216,26 @@ const CountryDetail = () => {
                   <span>
                     <p className="head">Capital:</p>
                     <p className={`value ${themes.minorText}`}>
-                      {countryDetail.capital.toString()}
+                      {countryDetail.capital && countryDetail.capital.toString()}
+                      {!countryDetail.capital && 'No capital'}
                     </p>
                   </span>
-                </div>
-                <div className="borders">
-                  <p className="head">Border Countries: </p>
-                  <div className="bdrs">
-                    {borderCountries === undefined ? (
-                      <p className={`none ${themes.minorText}`}>None found</p>
-                    ) : (
-                      borderCountries.map((border) => (
-                        <Border border={border} key={uuid()} />
-                      ))
-                    )}
-                  </div>
                 </div>
               </div>
             </motion.div>
           </motion.div>
+          <div className="borders">
+            <p className="head">Border Countries: </p>
+            <div className="bdrs">
+              {borderCountries === undefined ? (
+                <p className={`none ${themes.minorText}`}>None found</p>
+              ) : (
+                borderCountries.map((border) => (
+                  <Border border={border} key={uuid()} />
+                ))
+              )}
+            </div>
+          </div>
         </div>
       )}
       {error && <Error />}
