@@ -14,27 +14,27 @@
 ## Folder Structure
 ```
 countriesAPI
-├── node_modules
-├── public
-│   ├── favicon.svg
-│   └── assets
-      ├── images,svgs
-└── src
-    ├── Components
-       ├── All-components
-    ├── Pages
-        ├── all pages
-    ├── Utils
-        ├── Data-utils
-    ├── App.css
-    ├── App.jsx
-    ├── index.css
-    ├── index.jsx
-├── .gitignore
-├── index.html
-├── package.json
-├── README.md
-├── vite.config.js
+  ├── node_modules
+  ├── public
+  │   ├── favicon.svg
+  │   └── assets
+        ├── images,svgs
+  └── src
+      ├── Components
+         ├── All-components
+      ├── Pages
+          ├── all pages
+      ├── Utils
+          ├── Data-utils
+      ├── App.css
+      ├── App.jsx
+      ├── index.css
+      ├── index.jsx
+  ├── .gitignore
+  ├── index.html
+  ├── package.json
+  ├── README.md
+  ├── vite.config.js
 ```
 
 ## Development
