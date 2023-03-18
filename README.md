@@ -1,7 +1,5 @@
-# countriesAPI
-
 <h1 align="center">
-  newsblogreact
+  countriesAPI
 </h1>
 
 <p align="center">
