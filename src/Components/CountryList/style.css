@@ -5,6 +5,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    row-gap: 2rem;
 }
 .x-load{
     width: 100%;
@@ -18,10 +19,12 @@
         flex-wrap: wrap;
         justify-content: space-between;
         align-items: unset;
+
     }
 }
 @media screen and (min-width : 998px) {
     .country-list{
         justify-content: unset;
+        gap: 2.5rem;
     }
 }

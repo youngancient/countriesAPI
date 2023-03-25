@@ -6,14 +6,16 @@ import Main from "./Pages/Main/Main";
 import CountryDetail from "./Pages/CountryDetail/CountryDetail";
 import ThemeContext, { themes } from "./Utils/ThemeContext";
 import { AnimatePresence } from "framer-motion";
-import { Empty } from "antd";
 import Error from "./Components/Error404/Error";
+
+
 function App() {
   const location = useLocation();
   const [theme, setTheme] = useState(themes.light);
   const toggleTheme = () => {
     theme === themes.light ? setTheme(themes.dark) : setTheme(themes.light);
   };
+  localStorage.setItem('theme',JSON.stringify(theme));
   return (
     <ThemeContext.Provider value={theme}>
       <Header theme={theme} toggleTheme={toggleTheme} />

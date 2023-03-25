@@ -28,7 +28,7 @@ const Main = () => {
     q: "",
     isFilter: false,
   });
-
+  
   // readable and writable state
   const [countries, setCountries] = useState([]);
 
