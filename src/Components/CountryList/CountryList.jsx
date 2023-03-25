@@ -12,6 +12,7 @@ const CountryList = ({
   countries,
   setCountries,
   setDuplicate,
+  duplicate,
   filter,
 }) => {
   const [loading, setLoading] = useState(false);
@@ -85,6 +86,7 @@ const CountryList = ({
             flag={country.flags.png}
             key={country.name.common}
             country={country}
+            duplicate={duplicate}
           />
         ))}
       <div className="x-load">

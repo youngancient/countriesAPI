@@ -87,10 +87,10 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
 }
 .bcont{
-  margin-top: 0.8rem;
-  margin-left: 0.5rem;
   cursor: pointer;
 }
 .bcont:nth-of-type(odd){
@@ -113,11 +113,9 @@
     margin-left: 0rem;
     width: 30%;
   }
-  .bcont:nth-of-type(1),.bcont:nth-of-type(5){
-    /* margin-left: 0;  */
-  }
   .bdrs{
-    justify-content: space-between;
+    gap: 0.75rem;
+
   }
 }
 @media screen and (min-width: 998px) {
@@ -167,9 +165,6 @@
     margin-left: 0rem; 
   }
   .bcont{
-    margin-top: 0.5rem;
-    /* margin-left: 0.5rem; */
-    /* margin-left: 0rem;  */
     width: 19%;
   }
 }

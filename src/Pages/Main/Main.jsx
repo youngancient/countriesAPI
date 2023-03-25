@@ -91,6 +91,7 @@ const Main = () => {
           search={search}
           countries={countries}
           setCountries={setCountries}
+          duplicate={duplicate}
           setDuplicate={setDuplicate}
           setLoading={setLoading}
           loading={loading}

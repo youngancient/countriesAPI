@@ -55,15 +55,21 @@ const CountryDetail = () => {
   const [borderCountries, setBorderCountries] = useState();
   const [all, setAll] = useState(false);
 
+  // getting the name from parameter
   let params = useParams();
   // console.log(params);
-
+  const { state } = useLocation();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
   // this gets all the countries
   useEffect(() => {
-    axios
+
+    if(state){
+      setCountryDetail(state.country);
+      setAll(true);
+    }else{
+      axios
       .get(
         `https://restcountries.com/v3.1/name/${params.country}?fullText=true`
       )
@@ -76,19 +82,26 @@ const CountryDetail = () => {
         setLoading(false);
         setError("ish");
       });
+    }
   }, [params]);
 
+  // Pass the countries as state and use conditionals here to get it.
   useEffect(() => {
-    axios
-      .get("https://restcountries.com/v3.1/all")
-      .then((res) => {
-        setCountries(res.data);
-        setLoading(true);
-      })
-      .catch((err) => {
-        setLoading(false);
-        setError("ish");
-      });
+    if(state){
+      setCountries(state.duplicate);
+      setLoading(true);
+    }else{
+      axios
+        .get("https://restcountries.com/v3.1/all")
+        .then((res) => {
+          setCountries(res.data);
+          setLoading(true);
+        })
+        .catch((err) => {
+          setLoading(false);
+          setError("ish");
+        });
+    }
   }, []);
 
   // this filters the array of all the countries to match the boundary of the current country

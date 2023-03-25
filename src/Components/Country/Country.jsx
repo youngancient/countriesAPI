@@ -19,10 +19,23 @@ const countryVariants = {
   },
 };
 
-const Country = ({ capital, name, population, region, flag,country }) => {
+const Country = ({
+  capital,
+  name,
+  population,
+  region,
+  flag,
+  country,
+  duplicate,
+}) => {
   const navigate = useNavigate();
   const handleClick = () => {
-    navigate(`/${name}`);
+    navigate(`/${name}`, {
+      state: {
+        country: country,
+        duplicate: duplicate,
+      },
+    });
   };
 
   const themes = useContext(ThemeContext);
